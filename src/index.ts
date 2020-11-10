@@ -27,15 +27,25 @@ export const areCharsUniqueCharArray = (str: string): boolean => {
 };
 
 export const areCharsUniqueMap = (str: string): boolean => {
+    if (str == null) {
+        return true;
+    }
+
+    const length: number = str.length;
+
+    if (length < 2) {
+        return true;
+    }
+
     const m: Map<string, number> = new Map<string, number>();
 
-    for (const c of str) {
+    str.split('').forEach((c: string) => {
         if (m.has(c)) {
             return false;
         }
 
         m.set(c, 1);
-    }
+    });
 
     return true;
 };

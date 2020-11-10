@@ -1,0 +1,72 @@
+{
+  "name": "ctci-qa",
+  "version": "1.0.0",
+  "description": "Cracking the Code Interview Question Answer",
+  "type": "module",
+  "scripts": {
+    "lint": "tsc --noEmit && eslint \"src/**/*.ts\" \"src/**/*.test.ts\" --fix",
+    "format": "prettier --config .prettierrc.json \"src/**/*.ts\" \"src/**/*.test.ts\" --write",
+    "test": "jest",
+    "watch": "jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adramalech/ctci-qa.git"
+  },
+  "author": "Jonathan Throne",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adramalech/ctci-qa/issues"
+  },
+  "homepage": "https://github.com/adramalech/ctci-qa#readme",
+  "dependencies": {
+    "fp-ts": "^2.8.5"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.15",
+    "@types/node": "^14.14.7",
+    "@types/prettier": "^2.1.5",
+    "@types/supertest": "^2.0.10",
+    "@typescript-eslint/eslint-plugin": "^4.7.0",
+    "@typescript-eslint/parser": "^4.7.0",
+    "eslint": "^7.13.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "husky": "^4.3.0",
+    "jest": "^26.6.3",
+    "lint-staged": "^10.5.1",
+    "prettier": "^2.1.2",
+    "supertest": "^6.0.1",
+    "ts-jest": "^26.4.4",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.ts": [
+      "lint",
+      "format"
+    ]
+  },
+  "jest": {
+    "verbose": true,
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "collectCoverage": true,
+    "coverageDirectory": "coverage",
+    "coverageThreshold": {
+    "global": {
+       "branches": 100,
+       "functions": 100,
+       "lines": 100,
+       "statements": 100
+     }
+    },
+    "testPathIgnorePatterns": ["/node_modules"],
+    "roots": ["<rootDir>/src"]
+  }
+}

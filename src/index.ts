@@ -9,18 +9,21 @@ export const areCharsUniqueCharArray = (str: string): boolean => {
         return true;
     }
 
-    const orderedStr: string = str.split('').sort().join();
+    const orderedStr: string = str.split('').sort().join('');
 
-    let cur = 0;
-    let next = 1;
+    let curIndex = 0;
+    let nextIndex = 1;
 
-    while (next < length) {
-        if (orderedStr[cur] == orderedStr[next]) {
+    while (nextIndex < length) {
+        const cur = orderedStr.charAt(curIndex);
+        const next = orderedStr.charAt(nextIndex);
+
+        if (cur === next) {
             return false;
         }
 
-        cur++;
-        next++;
+        curIndex++;
+        nextIndex++;
     }
 
     return true;
@@ -39,13 +42,15 @@ export const areCharsUniqueMap = (str: string): boolean => {
 
     const m: Map<string, number> = new Map<string, number>();
 
-    str.split('').forEach((c: string) => {
+    const arrStrs: Array<string> = str.split('');
+
+    for (const c of arrStrs) {
         if (m.has(c)) {
             return false;
         }
 
         m.set(c, 1);
-    });
+    }
 
     return true;
 };

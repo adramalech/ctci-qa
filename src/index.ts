@@ -54,3 +54,26 @@ export const areCharsUniqueMap = (str: string): boolean => {
 
     return true;
 };
+
+export const isStringPermutation = (str1: string, str2: string): boolean => {
+    if ((str1 == null && str2 != null) || (str1 != null && str2 == null)) {
+        return false;
+    }
+
+    if (str1 === str2) {
+        return true;
+    }
+
+    const len1: number = str1.length;
+    const len2: number = str2.length;
+
+    if (len1 !== len2) {
+        return false;
+    }
+
+    const orderedStr1: string = str1.split('').sort().join('');
+
+    const orderedStr2: string = str2.split('').sort().join('');
+
+    return orderedStr1 === orderedStr2;
+};

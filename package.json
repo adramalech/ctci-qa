@@ -4,7 +4,8 @@
   "description": "Cracking the Code Interview Question Answer",
   "type": "module",
   "scripts": {
-    "lint": "tsc --noEmit && eslint \"src/**/*.ts\" \"src/**/*.test.ts\" --fix",
+    "build": "tsc",
+    "lint": "eslint --config .eslintrc.json \"src/**/*.ts\" \"src/**/*.test.ts\" --fix",
     "format": "prettier --config .prettierrc.json \"src/**/*.ts\" \"src/**/*.test.ts\" --write",
     "test": "jest",
     "watch": "jest --watch"
@@ -49,8 +50,8 @@
   },
   "lint-staged": {
     "*.ts": [
-      "lint",
-      "format"
+      "eslint --fix",
+      "prettier --write"
     ]
   },
   "jest": {

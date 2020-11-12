@@ -55,6 +55,7 @@ export const areCharsUniqueMap = (str: string): boolean => {
     return true;
 };
 
+// hello
 export const isStringPermutation = (str1: string, str2: string): boolean => {
     if ((str1 == null && str2 != null) || (str1 != null && str2 == null)) {
         return false;

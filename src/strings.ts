@@ -55,7 +55,6 @@ export const areCharsUniqueMap = (str: string): boolean => {
     return true;
 };
 
-// hello
 export const isStringPermutation = (str1: string, str2: string): boolean => {
     if ((str1 == null && str2 != null) || (str1 != null && str2 == null)) {
         return false;
@@ -77,4 +76,18 @@ export const isStringPermutation = (str1: string, str2: string): boolean => {
     const orderedStr2: string = str2.split('').sort().join('');
 
     return orderedStr1 === orderedStr2;
+};
+
+export const flattenArrayStrings = (strs: Array<string>): string => {
+    if (strs == null) {
+        return null;
+    }
+
+    let resultString = '';
+
+    strs.forEach((value: string) => {
+        resultString += value ?? '';
+    });
+
+    return resultString;
 };

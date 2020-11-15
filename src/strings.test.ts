@@ -2,7 +2,8 @@ import {
     areCharsUniqueCharArray,
     areCharsUniqueMap,
     isStringPermutation,
-} from './index';
+    flattenArrayStrings,
+} from './strings';
 
 describe('unique char tests', () => {
     const nullCharacter: string = null;
@@ -152,6 +153,56 @@ describe('permutation', () => {
         const expectedResult = true;
 
         const actualResult: boolean = isStringPermutation(str1, str1);
+
+        expect(actualResult).toBe(expectedResult);
+    });
+});
+
+describe('flatten strings', () => {
+    const strings: Array<string> = ['', 'a', 'b', 'abc'];
+
+    const singleElementArray: Array<string> = ['a'];
+
+    const nullArray: Array<string> = null;
+
+    const nullElementsInArray: Array<string> = [
+        null,
+        '',
+        'a',
+        'b',
+        null,
+        'c',
+        'd',
+    ];
+
+    test('flatten string array should return single string', () => {
+        const expectedResult = 'ababc';
+
+        const actualResult: string = flattenArrayStrings(strings);
+
+        expect(actualResult).toBe(expectedResult);
+    });
+
+    test('flatten string array is null should return null', () => {
+        const expectedResult: string = null;
+
+        const actualResult: string = flattenArrayStrings(nullArray);
+
+        expect(actualResult).toBe(expectedResult);
+    });
+
+    test('flatten single element array shoulld return string', () => {
+        const expectedResult = 'a';
+
+        const actualResult: string = flattenArrayStrings(singleElementArray);
+
+        expect(actualResult).toBe(expectedResult);
+    });
+
+    test('nulls as elements in array should return flattened string with non-nulls', () => {
+        const expectedResult = 'abcd';
+
+        const actualResult: string = flattenArrayStrings(nullElementsInArray);
 
         expect(actualResult).toBe(expectedResult);
     });
